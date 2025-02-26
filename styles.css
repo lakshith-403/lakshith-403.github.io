@@ -413,3 +413,14 @@ hr {
     font-size: 14px; /* Description size */
     color: #555; /* Description color */
 }
+
+#history h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}

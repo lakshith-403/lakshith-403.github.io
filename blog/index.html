@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lakshith Nishshanke's Blog</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        />
+        <link rel="icon" href="../dp.png" type="image/png" />
+        <style>
+            .blog-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+
+            .blog-card {
+                background: #fff;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s ease;
+            }
+
+            .blog-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .blog-card .preview {
+                padding: 1.5rem;
+            }
+
+            .blog-card h3 {
+                margin: 0 0 0.5rem 0;
+                color: #333;
+            }
+
+            .blog-card .date {
+                color: #666;
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .blog-card p {
+                color: #555;
+                margin: 0;
+                line-height: 1.5;
+            }
+
+            .blog-card a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .blog-card .read-more {
+                display: inline-block;
+                margin-top: 1rem;
+                color: #007bff;
+                font-weight: 500;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="dhead" class="container">
+            <div class="row">
+                <div id="dpic">
+                    <img src="../dp.png" class="ppic" />
+                </div>
+                <div id="ddesc">
+                    <h1>Lakshith's Blog</h1>
+                    <h2>Random thoughts and technical writings</h2>
+                    <div id="dico">
+                        <a href="https://x.com/luck_not_shit"
+                            ><i class="fab fa-twitter iico"></i>
+                        </a>
+                        <a href="https://github.com/lakshith-403"
+                            ><i class="fab fa-github iico"></i>
+                        </a>
+                        <a href="mailto:lakshith.k.nishshanke@gmail.com"
+                            ><i class="fas fa-envelope iico" id="iemail"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <a href="cp.html">
+                        <div class="preview">
+                            <h3>Competitive Programming</h3>
+                            <div class="date">January 15, 2024</div>
+                            <p>
+                                State of competitive programming with the
+                                advancements in LLMs.
+                            </p>
+                            <span class="read-more">Read more →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
