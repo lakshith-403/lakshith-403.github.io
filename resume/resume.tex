@@ -1,0 +1,483 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Lakshith's CV},
+    pdfauthor={Lakshith},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 6.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Lakshith Nishshanke
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{Sri Lanka}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{mailto:lakshith.k.nishshanke@gmail.com}{lakshith.k.nishshanke@gmail.com}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{tel:+94773190090}{+94773190090}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://linkedin.com/in/lakshith}{linkedin.com/in/lakshith}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/lakshith-403}{github.com/lakshith-403}}%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://lakshith-403.github.io}{lakshith-403.github.io}}%
+    \end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+
+    \section{}
+
+
+
+        
+        \begin{onecolentry}
+           Passionate and motivated professional with an ability to quickly learn new skills and technologies. With experience contributing to creating and maintaining stable and efficient mobile/web applications and AI/ML related projects, constantly expanding my knowledge and expertise.
+        \end{onecolentry}
+
+    \section{Education}
+
+
+
+        
+        \begin{twocolentry}{
+            May 2023 – May 2026
+        }
+            \textbf{University of Colombo, School of Computing}, BSc in Computer Science Undergraduate\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item GPA: 3.68/4.0
+            \end{highlights}
+        \end{onecolentry}
+
+
+
+    
+    \section{Experience}
+
+
+
+        
+        \begin{twocolentry}{
+            March 2022 – December 2022
+        }
+            \textbf{Fullstack Developer}, Labml.ai \hrefWithoutArrow{https://labml.ai/}{(Website)}\end{twocolentry}
+
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Helped manage the UI for a machine learning academic web app.
+                \item Assisted in creating a web app for testing and fine-tuning large language models.
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            December 2022 – April 2023
+        }
+            \textbf{iOS Developer}, Labml.ai \hrefWithoutArrow{https://labml.ai/}{(Website)}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Started development of an AI Image generating (stable diffusion inferencing) application.
+                \item Developed precise and stable
+WebSocket connections with failure handling mechanisms
+                \item Implemented an
+advanced UI with user interactions such as drawings
+\item Converted the machine learning academic web app to an iOS app implemented with Swiftui
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            August 2022 – Jan 2025
+        }
+            \textbf{Part time Developer}, Labml.ai \hrefWithoutArrow{https://labml.ai/}{(Website)}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Maintaining and improving an open source Machine Learning Experiment Tracker.
+                \item Started development of an open source Visualization Library, primarily focused on Large Language Models.
+                \item Contributing to nn.labml.ai (Collection of annotated ML research papers) - Wrote a GPT2 model in pytorch to annotate the Low Rank Adaptation Paper
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Feb 2025 – Present
+        }
+            \textbf{Part time Developer}, Linfield Labs \hrefWithoutArrow{https://github.com/linfieldlabs}{(Website)}\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Figuring out how to use LLM + agentic advancements in DevOps.
+                \item Developed a Github action to analyze diffs of Infrastructure as code files in pull requests and estimate the costs automatically.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+
+    
+    \section{Technologies}
+
+
+
+        
+        \begin{onecolentry}
+            \textbf{Languages:} Python, JavaScript/ TypeScript, C/C++, Java and Swift
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Frameworks:} ReactJS, Django, Fast api, Express (MERN Stack) and SwiftUI
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+        
+        \begin{onecolentry}
+            \textbf{AI/ML:} PyTorch
+        \end{onecolentry}
+
+
+
+    \section{Accomplishments}
+
+    \begin{twocolentry}{
+        }
+    \textbf{IEEExtreme}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{twocolentry} {
+    1st University, 2nd Sri Lanka, 75 World
+}
+    \begin{highlights}
+        \item IEEExtreme 18.0
+    \end{highlights}
+\end{twocolentry}
+
+\begin{twocolentry} {
+    1st University, 4th Sri Lanka, 152 World
+}
+    \begin{highlights}
+        \item IEEExtreme 17.0
+    \end{highlights}
+\end{twocolentry}
+
+\vspace{0.20 cm}
+\begin{twocolentry}{
+        }
+    \textbf{Google Competitions}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{twocolentry} {
+    2nd Sri Lanka - 1202 World
+}
+    \begin{highlights}
+        \item Kickstart Round B - May 2022
+    \end{highlights}
+\end{twocolentry}
+
+\begin{twocolentry} {
+    2nd Sri Lanka - 1974 World
+}
+    \begin{highlights}
+        \item Kickstart Round A - May 2022
+    \end{highlights}
+\end{twocolentry}
+
+\begin{twocolentry} {
+    12th Sri Lanka - 1211 World
+}
+    \begin{highlights}
+        \item Hashcode 2022 - March 2022
+    \end{highlights}
+\end{twocolentry}
+
+\begin{twocolentry} {
+    4th Sri Lanka - 1800 World
+}
+    \begin{highlights}
+        \item Hashcode 2021 - June 2021
+    \end{highlights}
+\end{twocolentry}
+
+\vspace{0.20 cm}
+\begin{twocolentry}{
+        }
+    \textbf{Informatics Olympiad}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{twocolentry} {
+    National Delegation
+}
+    \begin{highlights}
+        \item International Olympiad in Informatics (2019, 2020, 2021)
+    \end{highlights}
+\end{twocolentry}
+
+\begin{twocolentry} {
+    Top Scorer - Sri Lanka
+}
+    \begin{highlights}
+        \item Asia Pacific Informatics Olympiad (2020)
+    \end{highlights}
+\end{twocolentry}
+
+\begin{twocolentry} {
+    2 Silver - 1 Bronze
+}
+    \begin{highlights}
+        \item National Olympiad in Informatics (2019, 2020, 2021)
+    \end{highlights}
+\end{twocolentry}
+
+\vspace{0.20 cm}
+\begin{twocolentry}{
+        }
+    \textbf{Misc.}
+\end{twocolentry}
+
+\vspace{0.10 cm}
+\begin{twocolentry} {
+    Winner
+}
+    \begin{highlights}
+        \item IESL Robogames (National inter-school robotics competition organized by Institution of Engineers, Sri Lanka) - 2022
+    \end{highlights}
+\end{twocolentry}
+
+\begin{twocolentry} {
+    Winner
+}
+    \begin{highlights}
+        \item Aces Coders V10.0 (Largest National inter-university competitive coding competition organized by University of Peradeniya) - 2022
+    \end{highlights}
+\end{twocolentry}
+
+\section{Volunteeting}
+
+
+
+        
+        \begin{twocolentry} {
+    2022-present
+}
+    \begin{highlights}
+        \item Trainer for the National team - Olympiad in Informatics
+    \end{highlights}
+\end{twocolentry}
+
+        \begin{twocolentry} {
+    2022-present
+}
+    \begin{highlights}
+        \item Scientific Committee Member - Olympiad in Informatics
+    \end{highlights}
+\end{twocolentry}
+
+\begin{twocolentry} {
+    2023 and 2024
+}
+    \begin{highlights}
+        \item Problem setter and tester - National School Software Competition, Final round.
+    \end{highlights}
+\end{twocolentry}
+
+\begin{twocolentry} {
+    
+}
+    \begin{highlights}
+        \item Contributing to University events from IEEE, ACM student chapter and CSSL (The Computer Society of Sri Lanka).
+    \end{highlights}
+\end{twocolentry}
+
+\section{Interests}
+
+
+
+        
+        \begin{onecolentry}
+            I'm a coffee-loving fan of Harry Potter and Middle-earth. I appreciate a good cup of
+coffee, but I'm proud to say I don't need it to function. I'm a certified music addict and
+have been known to get lost in a good tune or two.
+(This does sound AI generated but I promise it's true)
+        \end{onecolentry}
+    
+
+\end{document}
