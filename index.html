@@ -117,7 +117,7 @@
                     <strong>AI dev</strong> - Joined
                     <a href="https://github.com/linfieldlabs">Linfield Labs</a>
                     and trying to figure out how to use LLM + agentic
-                    advancements in DevOps. Working on experimental Open Source
+                    advancements in DevOps. Working on experimental
                     projects at the moment.
                 </div>
             </div>
@@ -141,6 +141,29 @@
                         >Inspectus Repo</a
                     >,
                     <a href="https://github.com/labmlai/labml">Labml Repo</a>.
+                    <div class="career-shots">
+                        <img
+                            class="career-shot"
+                            src="images/monitor.png"
+                            alt="Labml App screenshot"
+                            loading="lazy"
+                            data-modal-src="images/monitor.png"
+                        />
+                        <img
+                            class="career-shot"
+                            src="images/inspectus.png"
+                            alt="Inspectus screenshot"
+                            loading="lazy"
+                            data-modal-src="images/inspectus.png"
+                        />
+                        <img
+                            class="career-shot"
+                            src="images/nn.png"
+                            alt="nn.labml.ai screenshot"
+                            loading="lazy"
+                            data-modal-src="images/nn.png"
+                        />
+                    </div>
                 </div>
             </div>
             <div class="entry row">
@@ -168,6 +191,15 @@
                     >. Faced interesting challenges like handling a large number
                     of images in a memory-efficient manner and keeping stable
                     web socket connections while recovering failures.
+                    <div class="career-shots">
+                        <img
+                            class="career-shot"
+                            src="images/promptart.png"
+                            alt="PromptArt screenshot"
+                            loading="lazy"
+                            data-modal-src="images/promptart.png"
+                        />
+                    </div>
                 </div>
             </div>
             <div class="entry row">
@@ -190,6 +222,15 @@
                     <a href="https://labml.ai/#discontinued"
                         >Discounnted projects</a
                     >
+                    <div class="career-shots">
+                        <img
+                            class="career-shot"
+                            src="images/papers.png"
+                            alt="Machine learning papers app screenshot"
+                            loading="lazy"
+                            data-modal-src="images/papers.png"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
@@ -375,6 +416,17 @@
             </div>
         </div>
 
+        <div id="image-modal" class="image-modal" aria-hidden="true">
+            <button
+                class="image-modal-close"
+                type="button"
+                aria-label="Close"
+            >
+                ×
+            </button>
+            <img class="image-modal-img" alt="" />
+        </div>
+
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const collapsibleHeaders =
@@ -389,6 +441,43 @@
                             content.style.display = "block" // Show content
                         }
                     })
+                })
+
+                const modal = document.getElementById("image-modal")
+                const modalImg = modal?.querySelector(".image-modal-img")
+                const closeBtn = modal?.querySelector(".image-modal-close")
+
+                const closeModal = () => {
+                    if (!modal || !modalImg) return
+                    modal.classList.remove("open")
+                    modal.setAttribute("aria-hidden", "true")
+                    document.body.classList.remove("modal-open")
+                    modalImg.src = ""
+                }
+
+                const openModal = (src, alt) => {
+                    if (!modal || !modalImg) return
+                    modalImg.src = src
+                    modalImg.alt = alt || ""
+                    modal.classList.add("open")
+                    modal.setAttribute("aria-hidden", "false")
+                    document.body.classList.add("modal-open")
+                }
+
+                document.querySelectorAll("[data-modal-src]").forEach((el) => {
+                    el.addEventListener("click", () =>
+                        openModal(el.dataset.modalSrc, el.alt)
+                    )
+                })
+
+                closeBtn?.addEventListener("click", closeModal)
+
+                modal?.addEventListener("click", (e) => {
+                    if (e.target === modal) closeModal()
+                })
+
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape") closeModal()
                 })
             })
         </script>
