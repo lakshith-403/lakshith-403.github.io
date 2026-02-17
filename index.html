@@ -7,6 +7,10 @@
         <link rel="stylesheet" href="styles.css" />
         <link
             rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,300;7..72,400;7..72,600&display=swap"
+        />
+        <link
+            rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         />
         <link rel="icon" href="dp.png" type="image/png" />
@@ -36,54 +40,17 @@
         </div>
 
         <div id="blog" class="container">
-            <div
-                style="
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-bottom: 1rem;
-                "
-            >
+            <div class="section-header">
                 <h2>Latest Posts</h2>
-                <a href="blog/" style="text-decoration: none; color: #007bff"
-                    >View all posts →</a
-                >
+                <a href="blog/" class="section-link">View all posts →</a>
             </div>
-            <div
-                style="
-                    display: flex;
-                    gap: 2rem;
-                    overflow-x: auto;
-                    padding-bottom: 1rem;
-                "
-            >
-                <div class="blog-card" style="min-width: 300px">
-                    <a
-                        href="blog/cp.html"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <div
-                            class="preview"
-                            style="
-                                padding: 1.5rem;
-                                background: #fff;
-                                border-radius: 8px;
-                                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                            "
-                        >
-                            <h3 style="margin: 0 0 0.5rem 0">
-                                Competitive Programming and LLMs
-                            </h3>
-                            <div
-                                style="
-                                    color: #666;
-                                    font-size: 0.9rem;
-                                    margin-bottom: 1rem;
-                                "
-                            >
-                                January 15, 2024
-                            </div>
-                            <p style="color: #555; margin: 0; line-height: 1.5">
+            <div class="blog-scroll">
+                <div class="blog-card">
+                    <a href="blog/cp.html" class="blog-link">
+                        <div class="preview">
+                            <h3>Competitive Programming and LLMs</h3>
+                            <div class="blog-date">January 15, 2024</div>
+                            <p>
                                 State of competitive programming with the
                                 advancements in LLMs.
                             </p>
@@ -104,7 +71,7 @@
                     <strong>Engineer</strong> - Joined
                     <a href="https://zeya.health">Zeya Health</a>. Working on
                     automating the front desk in healthcare: Win32 UI
-                    automation, RPA (Robotic Process Automation), and LLM
+                    automation, RPA, and LLM
                     agents. Nothing open source yet.
                 </div>
             </div>
@@ -117,8 +84,8 @@
                     <strong>AI dev</strong> - Joined
                     <a href="https://github.com/linfieldlabs">Linfield Labs</a>
                     and trying to figure out how to use LLM + agentic
-                    advancements in DevOps. Working on experimental
-                    projects at the moment.
+                    advancements in DevOps. Worked on some experimental
+                    projects.
                 </div>
             </div>
             <div class="entry row">
